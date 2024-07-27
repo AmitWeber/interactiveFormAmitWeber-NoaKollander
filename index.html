@@ -1,0 +1,122 @@
+﻿<!doctype html>
+<html lang="">
+<head>
+    <meta charset="utf-8" />
+    <title>טופס יצירת מם</title>
+    <meta name="description" content="בואו לייצר לעצמכם מם עם שלל תוספות והגדרות מגניבות" />
+    <meta name="keywords" content="מם, מצחיק, יצירה, פונט" />
+    <meta name="author" content="עמית ונועה" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <!-- CSS -->
+    <!--<link href="styles/reset.css" rel="stylesheet" />-->
+    <link href="styles/myStyle.css" rel="stylesheet" />
+
+    <!-- Scripts -->
+    <script src="jScripts/JavaScript.js" type="text/javascript"></script>
+
+     <!-- FONT -->
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <div id="container">
+        <div class="meme-section">
+            <div id="memeContainer">
+                <!-- תמונה נבחרת עם גודל קבוע -->
+                <img id="selectedImage" src="images/chooseImage.png" alt="Selected Image" style="width: 535px; height: 400px;">
+                <!-- תמונה נוספת להוספת אימוגי -->
+                <img id="overlayImage" src="images/emoji.png" alt="Overlay Image" style="display: none;">
+                
+                <div id="memeText">
+                    <!-- טקסטים של המם -->
+                    <div id="topText"></div>
+                    <div id="bottomText"></div>
+                </div>
+            </div>
+            
+            <!-- טופס יצירת מם -->
+            <form>
+                <h3>בחר תמונה:</h3>
+                <div class="thumbnail-container">
+                    <!-- תמונות ממוזערות לבחירה -->
+                    <img class="thumbnail" src="images/dogs.jpg" alt="musculer dog and weak dog" onclick="selectImage(1)">
+                    <img class="thumbnail" src="images/DisasterGirl.jpg" alt="girl smiles stands infront burned house" onclick="selectImage(2)">
+                    <img class="thumbnail" src="images/pouTheBear.jpg" alt="pou regular and pou high class" onclick="selectImage(3)">
+                    <img class="thumbnail" src="images/monkey.webp" alt="monkey looks straight and monkey looks aside" onclick="selectImage(4)">
+                    <img class="thumbnail" src="images/womanCat.jpg" alt="woman crying points to a smiling cat" onclick="selectImage(5)">
+                </div>
+                
+                <h3>בחר אפשרויות:</h3>
+                <label>
+                    <!-- אפשרות להוספת מסגרת לתמונה -->
+                    <input type="checkbox" name="frame" value="frame" onclick="toggleFrame()"> מסגרת לתמונה
+                </label>
+                <label>
+                    <!-- אפשרות להוספת אימוגי לתמונה -->
+                    <input type="checkbox" name="emoji" value="emoji" onclick="toggleEmoji()"> הוספת אימוגי
+                </label>
+                
+                <h3>בחר גודל פונט:</h3>
+                <label>
+                    <!-- אפשרות לבחירת גודל הפונט קטן -->
+                    <input type="radio" name="fontSize" value="16px" onclick="updateFontSize()"> קטן
+                </label>
+                <label>
+                    <!-- אפשרות לבחירת גודל הפונט בינוני -->
+                    <input type="radio" name="fontSize" value="24px" onclick="updateFontSize()"> בינוני
+                </label>
+                <label>
+                    <!-- אפשרות לבחירת גודל הפונט גדול -->
+                    <input type="radio" name="fontSize" value="32px" onclick="updateFontSize()"> גדול
+                </label>
+                
+                <h3>בחר משקל פונט:</h3>
+                <label>
+                    <!-- אפשרות לבחירת משקל הפונט קטן -->
+                    <input type="radio" name="fontWeight" value="300" onclick="updateFontWeight()"> קטן
+                </label>
+                <label>
+                    <!-- אפשרות לבחירת משקל הפונט בינוני -->
+                    <input type="radio" name="fontWeight" value="600" onclick="updateFontWeight()"> בינוני
+                </label>
+                <label>
+                    <!-- אפשרות לבחירת משקל הפונט גדול -->
+                    <input type="radio" name="fontWeight" value="900" onclick="updateFontWeight()"> גדול
+                </label>
+                
+                <h3>הוסף טקסט:</h3>
+                <label>
+                    <!-- שדה טקסט עליון -->
+                    טקסט 1:
+                    <input type="text" id="topTextInput" oninput="updateText()" placeholder="כתוב כאן...">
+                </label>
+                <label>
+                    <!-- שדה טקסט תחתון -->
+                    טקסט 2:
+                    <input type="text" id="bottomTextInput" oninput="updateText()" placeholder="כתוב כאן...">
+                </label>
+                
+                <br/><br/>
+                <!-- כפתור ליצירת מם -->
+                <button type="button" id="createMeme" onclick="showSummary()">צור מם</button>
+            </form>
+        </div>
+        
+       <!-- חלון סיכום המם -->
+<div id="summaryWindowID" class="summaryWindow">
+    <div class="summaryWindow-content">
+        <!-- כפתור סגירה של חלון הסיכום -->
+        <!-- 
+            <span class="close" onclick="closeSummary()">&times;</span>
+            כפתור סגירה: סוגר את חלון הסיכום כאשר לוחצים עליו.
+        -->
+        <span class="close" onclick="closeSummary()">&times;</span>
+        <h3>סיכום מם</h3>
+        <p id="summaryText"></p>
+    </div>
+</div>
+</div>
+</body>
+</html>
